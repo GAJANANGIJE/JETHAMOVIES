@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Video Uploads and Downloads</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .video-link {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload and Download Videos for Free</h1>
+        <form id="uploadForm">
+            <input type="file" id="videoFile" accept="video/*" required>
+            <button type="submit">Upload Video</button>
+        </form>
+        <div id="videoLinks"></div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Simulate video upload and generate a download link
+            let videoFile = document.getElementById('videoFile').files[0];
+            let videoLinksDiv = document.getElementById('videoLinks');
+            let videoLink = document.createElement('a');
+            videoLink.href = URL.createObjectURL(videoFile);
+            videoLink.download = videoFile.name;
+            videoLink.textContent = `Download ${videoFile.name}`;
+            videoLink.className = 'video-link';
+            videoLinksDiv.appendChild(videoLink);
+        });
+    </script>
+</body>
+</html>
